@@ -5,6 +5,7 @@ import cpw.mods.fml.common.eventhandler.Event.HasResult;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.World;
 
 /**
  * BiomeEvent is fired whenever an event involving biomes occurs.<br>
@@ -87,6 +88,24 @@ public class BiomeEvent extends Event
             super(biome);
             this.original = original;
             this.type = type;
+        }
+    }
+
+    /**
+      *  TODO
+    */
+    @HasResult
+    public static class GetVillageBlock extends BiomeEvent
+    {
+        public final Block original;
+        public final World world;
+        public Block replacement;
+
+        public GetVillageBlock(World world, Block original)
+        {
+            super(null);
+            this.original = original;
+            this.world = world;
         }
     }
     
